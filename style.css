@@ -2,13 +2,14 @@ body {
     background-color: #ECF2FF;
 }
 
-.titulo {
+.titulo, .favorite-titulo{
     width: 100%;
     display: flex;
     justify-content: center;
     font-family: "Playwrite NG Modern", cursive;
-    color: #5A639C;
+    color: #1F2544;
     font-size: 40px;
+    margin: 0;
 }
 
 .contenedorsito {
@@ -17,7 +18,7 @@ body {
     align-items: center;
 }
 
-.botonsito {
+#botonsito {
     border: #7776B3 solid 1px;
     border-radius: 10px;
     margin-top: 50px;
@@ -30,7 +31,7 @@ body {
     font-size: 15px;
 }
 
-.botonsito:hover {
+#botonsito:hover {
     width: 270px;
     height: 54px;
     transform: translateX(15%);
@@ -40,22 +41,126 @@ body {
 }
 
 .contenedor-img {
-    width: 50%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 600px);
+    column-gap: 20px;
+    align-items: center;
+    /*flex-direction: row;
+    justify-content: space-evenly;*/
+    width: 100%;
     height: auto;
 }
 
-.imagensita {
-    width: 100%;
-    height: 100%;
-    justify-content: center;
+#img1, #img2, #img3 {
+    width: 80%;
+    height: 500px;
     border-radius: 20px;
-    background-image: black;
+    object-fit: cover;
 }
 
+#article-img1, #article-img2, #article-img3 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+
+#article-img1 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+#article-img2 {
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+#article-img3 {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+#favorite-button {
+    width: 165px;
+    height: 40px;
+    margin-top: 25px;
+    border: #1F2544 solid 1px;
+    border-radius: 10px;
+    font-family: "Playwrite NG Modern", cursive;
+    background-color: #FFD0EC;
+    color: #1F2544;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#favorite-button:hover {
+    width: 180px;
+    height: 45px;
+    transform: translateX(15%);
+    transform: translateY(15%);
+    transition: transform 0.2s ease-in-out;
+    background-color: #E6B9DE;
+}
+
+.titulo2 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: "Playwrite NG Modern", cursive;
+    color: #5A639C;
+    font-size: 30px;
+}
+
+
 /*Diseño para medidas pequeñas*/
-@media (max-width: 767px) {
-    .contenedorsito {
-        height: 90vh;
-        justify-content: center;
+@media (max-width: 1024px) {
+    .contenedor-img {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(3, 600px);
+        row-gap: 20px;
+    }
+
+    #article-img1 {
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+    
+    #article-img2 {
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+    
+    #article-img3 {
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 3;
+        grid-row-end: 4;
+    }
+}
+
+@media (max-width: 700px) {
+    #img1, #img2, #img3 {
+        width: 80%;
+        height: 300px;
+        border-radius: 20px;
+        object-fit: cover;
+    }
+
+    .contenedor-img {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(3, 380px);
+        row-gap: 20px;
     }
 }
