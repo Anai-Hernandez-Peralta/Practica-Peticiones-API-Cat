@@ -2,7 +2,7 @@ body {
     background-color: #ECF2FF;
 }
 
-.titulo, .favorite-titulo{
+.titulo {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -88,7 +88,7 @@ body {
     grid-row-end: 3;
 }
 
-#favorite-button {
+#favorite-btn1, #favorite-btn2, #favorite-btn3 {
     width: 165px;
     height: 40px;
     margin-top: 25px;
@@ -101,7 +101,7 @@ body {
     font-size: 15px;
 }
 
-#favorite-button:hover {
+#favorite-btn1:hover, #favorite-btn2:hover, #favorite-btn3:hover {
     width: 180px;
     height: 45px;
     transform: translateX(15%);
