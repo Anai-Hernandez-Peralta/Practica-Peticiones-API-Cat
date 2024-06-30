@@ -1,5 +1,9 @@
 body {
-    background-color: #ECF2FF;
+    background-color: #49243E;
+}
+
+#random-michis {
+    height: 1500px;
 }
 
 .titulo {
@@ -7,7 +11,7 @@ body {
     display: flex;
     justify-content: center;
     font-family: "Playwrite NG Modern", cursive;
-    color: #1F2544;
+    color: #FFE7E7;
     font-size: 40px;
     margin: 0;
 }
@@ -19,14 +23,14 @@ body {
 }
 
 #botonsito {
-    border: #7776B3 solid 1px;
-    border-radius: 10px;
+    border: #944E63 solid 1px;
+    border-radius: 40px;
     margin-top: 50px;
     width: 250px;
     height: 45px;
     font-family: "Playwrite NG Modern", cursive;
-    background-color: #E2BBE9;
-    color: #5A639C;
+    background-color: #FFE7E7;
+    color: #944E63;
     font-weight: bold;
     font-size: 15px;
 }
@@ -37,7 +41,7 @@ body {
     transform: translateX(15%);
     transform: translateY(15%);
     transition: transform 0.2s ease-in-out;
-    background-color: rgb(175, 164, 192);
+    background-color: #E6B9DE;
 }
 
 .contenedor-img {
@@ -89,20 +93,28 @@ body {
 }
 
 #favorite-btn1, #favorite-btn2, #favorite-btn3 {
-    width: 165px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 230px;
     height: 40px;
     margin-top: 25px;
-    border: #1F2544 solid 1px;
+    border: #49243E solid 1px;
     border-radius: 10px;
     font-family: "Playwrite NG Modern", cursive;
-    background-color: #FFD0EC;
-    color: #1F2544;
+    background-color: #FFE7E7;
+    color: #49243E;
     font-weight: bold;
     font-size: 15px;
 }
 
+.btn-fav-img {
+    width: 40px;
+    height: 40px;
+}
+
 #favorite-btn1:hover, #favorite-btn2:hover, #favorite-btn3:hover {
-    width: 180px;
+    width: 250px;
     height: 45px;
     transform: translateX(15%);
     transform: translateY(15%);
@@ -110,21 +122,195 @@ body {
     background-color: #E6B9DE;
 }
 
-.titulo2 {
+.titulo2, .titulo-fav, .titulo-upload {
+    text-align: center;
     width: 100%;
     display: flex;
     justify-content: center;
     font-family: "Playwrite NG Modern", cursive;
-    color: #5A639C;
+    color: #DBAFA0;
     font-size: 30px;
 }
 
+.contenedor-fav {
+    display: flex;
+    flex-direction: column;
+}
+
+#favorite-michis {
+    height: auto;
+    padding: 15px;
+    padding-top: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 500px;
+    gap: 30px;
+}
+
+#favorite-michis img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+#favorite-michis button {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 230px;
+    height: 40px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border: #49243E solid 1px;
+    border-radius: 10px;
+    font-family: "Playwrite NG Modern", cursive;
+    background-color: #FFE7E7;
+    color: #49243E;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#favorite-michis button:hover {
+    width: 250px;
+    height: 45px;
+    transform: translateX(15%);
+    transform: translateY(15%);
+    transition: transform 0.2s ease-in-out;
+    background-color: #E6B9DE;
+}
+
+#favorite-michis button>img {
+    width: 40px;
+    height: 40px;
+}
+
+#favorite-michis article {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+
+#uploadingMichi {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#uploadingForm input {
+    display: none;
+}
+
+.contenedor-btn-upload {
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    justify-content: space-between;
+    width: 280px;
+    align-items: center;
+}
+
+.input-upload {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 250px;
+    height: 40px;
+    border: #49243E solid 1px;
+    border-radius: 10px;
+    font-family: "Playwrite NG Modern", cursive;
+    background-color: #FFE7E7;
+    color: #49243E;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.input-upload:hover {
+    width: 270px;
+    height: 50px;
+    transform: translateX(15%);
+    transform: translateY(15%);
+    transition: transform 0.2s ease-in-out;
+    background-color: #E6B9DE;
+}
+
+#uploadingForm button {
+    border: #944E63 solid 1px;
+    border-radius: 40px;
+    width: 250px;
+    height: 45px;
+    font-family: "Playwrite NG Modern", cursive;
+    background-color: #FFE7E7;
+    color: #944E63;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#uploadingForm button:hover {
+    width: 270px;
+    height: 54px;
+    transform: translateX(15%);
+    transform: translateY(15%);
+    transition: transform 0.2s ease-in-out;
+    background-color: #E6B9DE;
+}
+
+#contenedor-carga, #contenedorRealizado {
+    background-color: #E2BBE9;
+    opacity: 50%;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    -webkit-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+    z-index: 10000;
+}
+
+#carga {
+    border: 15px solid #81689D;
+    border-top-color: #1F2544;
+    border-top-style: outset;
+    height: 80px;
+    width: 80px;
+    border-radius: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    -webkit-animation: girar 1.5s linear infinite;
+    -o-animation: girar 1.5s linear infinite;
+    animation: girar 1.5s linear infinite;
+}
+
+#realizadoImg {
+    opacity: 0;
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+@keyframes girar {
+    from { transform: rotate(0deg);}
+    to { transform: rotate(360deg);}
+}
 
 /*Diseño para medidas pequeñas*/
 @media (max-width: 1024px) {
     .contenedor-img {
         grid-template-columns: repeat(1, 1fr);
-        grid-template-rows: repeat(3, 600px);
+        grid-template-rows: auto;
         row-gap: 20px;
     }
 
@@ -148,6 +334,16 @@ body {
         grid-row-start: 3;
         grid-row-end: 4;
     }
+
+    #random-michis {
+        height: 2010px;
+    }
+}
+
+@media (max-width: 800px) {
+    #favorite-michis {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 700px) {
@@ -162,5 +358,13 @@ body {
         grid-template-columns: repeat(1, 1fr);
         grid-template-rows: repeat(3, 380px);
         row-gap: 20px;
+    }
+
+    #random-michis {
+        height: auto;
+    }
+
+    #favorite-michis {
+        grid-template-columns: repeat(1, 1fr);
     }
 }
