@@ -167,7 +167,10 @@ async function deleteFavouriteMichi(id) {
 }
 
 async function uploadMichiPhoto() {
+    botonSubir.style.backgroundColor = '#FFE7E7';
+
     mostrarLoadingPage();
+
     const form = document.getElementById('uploadingForm');
     const formData = new FormData(form);
 
@@ -199,11 +202,12 @@ async function uploadMichiPhoto() {
 }
 const botonSubir = document.getElementById('upload-input');
 const inputSubir = document.getElementById('file');
-
 botonSubir.addEventListener('click', () => {
     inputSubir.click();
 })
-
+botonSubir.addEventListener('blur', (event) => {
+    event.target.style.background = '#474F7A';
+})
 
 //Se llama la función para que funcione al recargar la página
 generateMichis();
