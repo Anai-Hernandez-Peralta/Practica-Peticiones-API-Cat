@@ -1,3 +1,9 @@
+const api = axios.create({
+    baseURL: `https://api.thecatapi.com/v1`
+});
+
+api.defaults.headers.common['X-API-KEY'] = 'live_LG5ied2ExWeAyOKVMg8VDTi7146HtGpFG56YfZ7rslxbMWB9jUbLDjNLlk6iAhiF';
+
 const API_URL_RANDOM = 'https://api.thecatapi.com/v1/images/search?limit=3';
 
 const API_URL_FAVORITES = 'https://api.thecatapi.com/v1/favourites';
@@ -44,15 +50,18 @@ function mostrarRealizado() {
 
 async function generateMichis() {
     mostrarLoadingPage();
-    const response = await fetch(API_URL_RANDOM);
-    const data = await response.json();
+
+    const {data, status} = await api.get('/images/search?limit=3');
+
+    /*const response = await fetch(API_URL_RANDOM);
+    const data = await response.json();*/
 
     console.log('Random');
-    console.log(data);
+    //console.log(data);
 
-    if(response.status !== 200){
-        alert(`Hubo un error al cargar las imagenes: ${response.status} ${data.message}`);
-        //spanError.innerHTML = "Hubo un error: " + response.status;
+    if(status !== 200){
+        alert(`Hubo un error al cargar las imagenes: ${status} ${data.message}`);
+        //spanError.innerHTML = "Hubo un error: " + status;
     } else {
 
         const img1 = document.getElementById('img1');
@@ -78,20 +87,22 @@ const boton = document.getElementById('botonsito');
 boton.onclick = generateMichis;
 
 async function loadFavouriteMichis() {
-    const response = await fetch(API_URL_FAVORITES,{
+    const {data, status} = await api.get('/favourites');
+
+    /*const response = await fetch(API_URL_FAVORITES,{
         method: 'GET',
         headers: {
             'X-API-KEY': 'live_LG5ied2ExWeAyOKVMg8VDTi7146HtGpFG56YfZ7rslxbMWB9jUbLDjNLlk6iAhiF'
         }
     });
-    const data = await response.json();
+    const data = await response.json();*/
 
     console.log('favoritos');
-    console.log(data);
+    //console.log(data);
 
-    if(response.status !== 200){
-        alert(`Hubo un error al cargar los favoritos: ${response.status} ${data.message}`);
-        //spanError.innerHTML = "Hubo un error: " + response.status;
+    if(status !== 200){
+        alert(`Hubo un error al cargar los favoritos: ${status} ${data.message}`);
+        //spanError.innerHTML = "Hubo un error: " + status;
     } else {
         const section = document.getElementById('favorite-michis');
 
@@ -121,7 +132,12 @@ async function loadFavouriteMichis() {
 
 async function saveFavouriteMichi(id) {
     mostrarRealizado();
-    const response = await fetch(API_URL_FAVORITES, {
+
+    const {data, status} = await api.post('/favourites', {
+        image_id: id,
+    });
+
+    /*const response = await fetch(API_URL_FAVORITES, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -131,14 +147,14 @@ async function saveFavouriteMichi(id) {
             image_id: id
         })
     });
-    const data = await response.json();
+    const data = await response.json();*/
 
     console.log('save');
-    console.log(data);
+    //console.log(data);
 
-    if(response.status !== 200){
-        alert(`Hubo un error al guardar en favoritos: ${response.status} ${data.message}`);
-        //spanError.innerHTML = "Hubo un error: " + response.status + data.message;
+    if(status !== 200){
+        alert(`Hubo un error al guardar en favoritos: ${status} ${data.message}`);
+        //spanError.innerHTML = "Hubo un error: " + status + data.message;
     } else {
         console.log('Michi guardado en Favoritos');
         loadFavouriteMichis();
@@ -148,17 +164,20 @@ async function saveFavouriteMichi(id) {
 
 async function deleteFavouriteMichi(id) {
     mostrarRealizado();
-    const response = await fetch(API_URL_FAVORITES_DELETE(id), {
+
+    const {data, status} = await api.delete(`/favourites/${id}`);
+
+    /*const response = await fetch(API_URL_FAVORITES_DELETE(id), {
         method: 'DELETE',
         headers: {
             'X-API-KEY': 'live_LG5ied2ExWeAyOKVMg8VDTi7146HtGpFG56YfZ7rslxbMWB9jUbLDjNLlk6iAhiF'
         }
     });
-    const data = await response.json();
+    const data = await response.json();*/
 
-    if(response.status !== 200){
-        alert(`Hubo un error al borrar de favoritos: ${response.status} ${data.message}`);
-        //spanError.innerHTML = "Hubo un error: " + response.status + data.message;
+    if(status !== 200){
+        alert(`Hubo un error al borrar de favoritos: ${status} ${data.message}`);
+        //spanError.innerHTML = "Hubo un error: " + status + data.message;
     } else {
         console.log('Michi elminado de favoritos');
         loadFavouriteMichis();
@@ -174,7 +193,7 @@ async function uploadMichiPhoto() {
     const form = document.getElementById('uploadingForm');
     const formData = new FormData(form);
 
-    console.log(formData.get('file'));
+    //console.log(formData.get('file'));
 
     const response = await fetch(API_URL_UPLOAD, {
         method: 'POST',
@@ -188,13 +207,14 @@ async function uploadMichiPhoto() {
 
     if(response.status < 200 && response.status > 300){
         alert(`Hubo un error al subir la foto: ${response.status} ${data.message}`);
-        console.log(response);
-        console.log(data);
+        //console.log(response);
+        //console.log(data);
+
         //spanError.innerHTML = "Hubo un error: " + response.status + data.message;
     } else {
         console.log('Foto subida:D');
-        console.log({data});
-        console.log(data.url);
+        //console.log({data});
+        //console.log(data.url);
         
         saveFavouriteMichi(data.id);
         ocultarLoadingPage();
